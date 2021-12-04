@@ -23,7 +23,7 @@ jobs:
       - name: Install
         run: |
           npm set @apraamcos:registry https://npm.pkg.github.com
-          npm set //npm.pkg.github.com/:_authToken ${{ secrets.REGISTRY_TOKEN }}
+          npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
           npm ci
       - name: Increase version number
         run: npm version patch
