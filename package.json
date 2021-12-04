@@ -1,0 +1,20 @@
+{
+  "name": "@apraamcos/graphql-codegen-typescript-plugin",
+  "version": "1.0.0",
+  "description": "Apra amcos codegen plugin for GraphQL Typescript",
+  "main": "index.js",
+  "source": "index.js",
+  "scripts": {},
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apraamcos/graphql-codegen-typescript-plugin.git"
+  },
+  "author": "Jiarong Gu <jgu2@apra.com.au>",
+  "peerDependencies": {
+    "@graphql-codegen/typescript": ">= 2.4.1"
+  },
+  "devDependencies": {}
+}
