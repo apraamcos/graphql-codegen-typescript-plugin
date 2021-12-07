@@ -82,7 +82,7 @@ function wrapTypeNodeWithModifiers(typeNode, convert) {
     }
     case VariableKind.LIST_TYPE: {
       const innerType = wrapTypeNodeWithModifiers(typeNode.type, convert);
-      return `Maybe<Array<${innerType}>>`;
+      return `Maybe<Array<${innerType}> | ${innerType}>>`;
     }
   }
   return wrapTypeNodeWithModifiers(typeNode?.type, convert);
