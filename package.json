@@ -1,6 +1,6 @@
 {
   "name": "@apraamcos/graphql-codegen-typescript-plugin",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Apra amcos codegen plugin for GraphQL Typescript",
   "main": "index.js",
   "source": "index.js",
