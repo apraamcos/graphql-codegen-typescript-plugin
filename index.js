@@ -50,7 +50,7 @@ const mutationInputTemplate = `input: {
   options?: Omit<MutationOptions, 'mutation' | 'variables'>{{variables}} 
 }{{variableUndefined}}`;
 
-const variableTypeTemplate = `{{inputName}}: {{inputType}}`;
+const variableTypeTemplate = `{{inputName}}{{nullable}}: {{inputType}}`;
 
 const scalars = {
   ID: "string",
@@ -91,7 +91,9 @@ function wrapTypeNodeWithModifiers(typeNode, convert) {
 function generateVariables(inputNames) {
   let variables = "  variables: {";
   inputNames.forEach((inputName, i) => {
-    variables += `\n    ${replaceTemplate(variableTypeTemplate, inputName)}`;
+    const nullable = `${inputName.type.kind != VariableKind.NON_NULL_TYPE ? "?" : ""}`;
+
+    variables += `\n    ${replaceTemplate(variableTypeTemplate, { ...inputName, nullable })}`;
     if (i < inputNames.length - 1) {
       variables += ",";
     }
@@ -124,7 +126,7 @@ function plugin(schema, documents, config, info) {
         .map((vd) => {
           const inputName = vd.variable.name?.value;
           const inputType = wrapTypeNodeWithModifiers(vd.type, convert);
-          return { inputName, inputType };
+          return { inputName, inputType, type: vd.type };
         })
         .filter((x) => x.inputName && x.inputType);
 
